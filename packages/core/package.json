@@ -8,7 +8,7 @@
   "exports": {
     ".": {
       "types":   "./dist/index.d.ts",
-      "browser": { "import": "./dist/index.browser.js", "types": "./dist/index.browser.d.ts" },
+      "browser": { "import": "./dist/index.browser.js", "types": "./dist/index.browser.d.mts" },
       "node":    { "import": "./dist/index.mjs", "require": "./dist/index.js" }
     }
   },
