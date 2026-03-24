@@ -3,3 +3,7 @@ dist/
 *.tsbuildinfo
 .env*.local
 .superpowers/
+apps/docs/public/holi.css
+apps/docs/public/holi-dist/
+apps/docs/.next/
+apps/docs/.source/
