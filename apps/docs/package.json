@@ -1,0 +1,27 @@
+{
+  "name": "@holi/docs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/compile-docs-css.mjs",
+    "build": "next build",
+    "dev": "node scripts/compile-docs-css.mjs && next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@holi/core": "*",
+    "fumadocs-core": "latest",
+    "fumadocs-ui": "latest",
+    "fumadocs-mdx": "latest",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/mdx": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
