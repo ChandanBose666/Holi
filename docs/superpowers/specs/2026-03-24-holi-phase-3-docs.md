@@ -17,6 +17,21 @@ Reference bar: Tailwind CSS docs, Bootstrap docs, Radix UI docs, shadcn/ui docs.
 
 ---
 
+## Confirmed Design Decisions
+
+| Decision | Choice |
+|---|---|
+| Color scheme | Light & Clean — white `#ffffff` bg, slate text `#1e293b`, muted `#64748b`, indigo `#6366F1` accent |
+| Layout | Three-column — left page nav (240px) + main content + right in-page TOC (200px) |
+| Landing hero | Visual-first: headline + animated token swatches; "Show code" toggle reveals the `holi.config.json` that produced them |
+| Code highlighting | Shiki (via Fumadocs) |
+| Dogfooding | Site styled with its own Holi-compiled CSS |
+| Deployment | Static export → Vercel free tier |
+
+**Hero pattern:** Visual output first, code on demand. Every demo page follows the same principle — rendered result shown immediately, config/CSS collapsible below.
+
+---
+
 ## What We Are Building
 
 A **Next.js App Router** documentation site at `apps/docs` in the monorepo.
@@ -38,7 +53,7 @@ the docs site IS styled with Holi output). It deploys to a static export or Verc
   /docs/animations       → Animation system + live animated examples
   /docs/cli              → CLI reference (init / build / watch)
   /docs/advanced         → Prefix, custom output dirs, breakpoints
-/playground              → Live browser editor (Phase 5 preview — stubbed in Phase 3)
+/playground              → "Coming soon" placeholder page (a simple centred message + link back to docs; no editor in Phase 3)
 ```
 
 ---
@@ -47,7 +62,7 @@ the docs site IS styled with Holi output). It deploys to a static export or Verc
 
 | Concern | Choice | Reason |
 |---|---|---|
-| Framework | Next.js 16 (App Router) | SSG support, MDX, ecosystem |
+| Framework | Next.js latest stable (15.x / App Router) | SSG support, MDX, ecosystem |
 | Docs framework | Fumadocs (via `fumadocs-core` + `fumadocs-ui`) | MDX-native, fast, customisable |
 | Styling | Holi-compiled CSS + Tailwind (for the doc chrome) | Dogfooding — site uses its own tool |
 | Code highlighting | Shiki (via Fumadocs) | Best-in-class, matches VS Code themes |
@@ -208,7 +223,7 @@ These are custom React components used in MDX pages:
 | `<LiveDemo>…html…</LiveDemo>` | Renders HTML in a sandboxed preview box |
 | `<CompiledCSS>…css…</CompiledCSS>` | Syntax-highlighted compiled CSS output, collapsible |
 | `<AnimationDemo name="fade-in" />` | Renders a box that plays the animation |
-| `<UtilityTable />` | Auto-generates the utility class table from compiled output |
+| `<UtilityTable />` | Auto-generates the utility class table by calling `compileFromObject(DEFAULT_CONFIG)` from `@holi/core` at build time in a Server Component, then iterating the result |
 | `<ConfigExample>…json…</ConfigExample>` | Syntax-highlighted + annotated JSON |
 | `<BeforeAfter before="…" after="…" />` | Shows token ref → resolved value |
 
@@ -219,10 +234,13 @@ so the demos always reflect the actual compiler output — no hardcoding.
 
 ## Dogfooding: Site Styled with Holi
 
+**Prerequisite:** `compileAndWrite(configPath)` is already exported from `@holi/core` (built in Phase 1).
+
 The docs site's own CSS is partially compiled by Holi. A `holi.docs.config.json` at the
 `apps/docs` root defines the design tokens used by the site itself. During `next build`,
-a prebuild script runs `holi build -c holi.docs.config.json` which writes CSS to
-`apps/docs/public/holi.css`. That file is imported in the root layout.
+a prebuild script (`scripts/compile-docs-css.mjs`) imports `compileAndWrite` from `@holi/core`
+and runs it against `holi.docs.config.json`, writing CSS to `apps/docs/public/holi.css`.
+That file is imported in the root layout.
 
 This means: **the docs site is a living proof that Holi works**.
 
@@ -272,7 +290,9 @@ CLI
 Advanced
   ├── Output Prefix
   ├── Custom Output Dir
-  └── Disabling Utilities
+  ├── Disabling Utilities
+  ├── Multiple Breakpoints
+  └── Circular Token References
 ```
 
 ---
