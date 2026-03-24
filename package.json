@@ -1,0 +1,22 @@
+{
+  "name": "holi-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w packages/cli",
+    "test": "vitest run",
+    "test:browser": "vitest run packages/core/tests/browser-entry.test.ts",
+    "dev": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.1"
+  }
+}
