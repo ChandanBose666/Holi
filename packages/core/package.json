@@ -1,0 +1,30 @@
+{
+  "name": "@holi/core",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types":   "./dist/index.d.ts",
+      "browser": { "import": "./dist/index.browser.js", "types": "./dist/index.browser.d.ts" },
+      "node":    { "import": "./dist/index.mjs", "require": "./dist/index.js" }
+    }
+  },
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "ajv": "^8.0.0",
+    "@holi/schema": "*",
+    "@holi/shared": "*"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "tsup": "*",
+    "vitest": "*",
+    "@types/node": "*"
+  }
+}
