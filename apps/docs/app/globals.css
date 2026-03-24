@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* Site-level custom properties */
+:root {
+  --site-accent: #6366f1;
+  --site-text: #1e293b;
+  --site-muted: #64748b;
+  --site-border: #e2e8f0;
+  --site-surface: #f8fafc;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Prose overrides for MDX content */
+code:not(pre code) {
+  background: #f1f5f9;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  color: #6366f1;
+}
