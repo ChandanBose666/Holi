@@ -1,0 +1,13 @@
+{
+  "title": "Docs",
+  "pages": [
+    "getting-started",
+    "config",
+    "tokens",
+    "components",
+    "utilities",
+    "animations",
+    "cli",
+    "advanced"
+  ]
+}
