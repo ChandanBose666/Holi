@@ -1,0 +1,32 @@
+---
+title: Utilities
+description: Auto-generated utility classes for display, spacing, and responsive layouts.
+---
+
+Holi auto-generates utility classes from your spacing tokens. Every spacing value produces a full set of `m-*`, `p-*`, `mx-*`, `my-*`, etc. classes.
+
+## All utility classes
+
+Generated at build time from `compileFromObject(DEFAULT_CONFIG)` — always reflects your real config.
+
+<UtilityTable />
+
+## Responsive variants
+
+```html
+<!-- flex on mobile, grid on medium+ screens -->
+<div class="flex md:grid">...</div>
+```
+
+| Prefix | Breakpoint |
+|--------|-----------|
+| `sm:` | `@media (min-width: 640px)` |
+| `md:` | `@media (min-width: 768px)` |
+| `lg:` | `@media (min-width: 1024px)` |
+| `xl:` | `@media (min-width: 1280px)` |
+
+## Disabling utilities
+
+```json
+{ "output": { "utilities": false } }
+```

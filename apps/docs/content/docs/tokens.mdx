@@ -1,0 +1,46 @@
+---
+title: Tokens
+description: Visual reference for every design token — colors, spacing, typography, radius, and shadows.
+---
+
+Tokens are the foundation of your design system. Define them once in `holi.config.json`; reference them with dot-notation anywhere.
+
+## Colors
+
+<ColorSwatchGrid />
+
+Each token becomes a CSS custom property at compile time: `--color-primary`, `--color-surface`, etc.
+
+## Spacing
+
+<SpacingRulerGrid />
+
+## Typography
+
+| Token | Value |
+|-------|-------|
+| `sans` | `"Inter", sans-serif` |
+| `size-sm` | `0.875rem` |
+| `size-base` | `1rem` |
+| `size-lg` | `1.25rem` |
+
+## Radius
+
+| Token | Value | Preview |
+|-------|-------|---------|
+| `sm` | `4px` | <div style={{display:'inline-block',width:40,height:40,background:'#6366F1',borderRadius:4}}/> |
+| `md` | `8px` | <div style={{display:'inline-block',width:40,height:40,background:'#6366F1',borderRadius:8}}/> |
+| `lg` | `16px` | <div style={{display:'inline-block',width:40,height:40,background:'#6366F1',borderRadius:16}}/> |
+
+## Shadows
+
+| Token | Preview |
+|-------|---------|
+| `sm` | <div style={{display:'inline-block',width:60,height:40,background:'white',borderRadius:8,boxShadow:'0 1px 3px rgba(0,0,0,0.1)'}}/> |
+
+## Referencing tokens
+
+Use dot-notation inside any string value. Holi resolves references at compile time.
+
+<BeforeAfter before="padding: spacing.sm spacing.md" after="padding: 8px 16px" label="Token resolution" />
+<BeforeAfter before="background: color.primary" after="background: #6366F1" label="Token resolution" />

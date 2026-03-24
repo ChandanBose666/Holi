@@ -1,0 +1,50 @@
+---
+title: Animations
+description: Define @keyframes animations in your config and use them as helper classes.
+---
+
+## Built-in: `fade-in`
+
+<AnimationDemo name="fade-in" cssClass="animate-fade-in" />
+
+<ConfigExample label="Config" json={`{
+  "animations": {
+    "fade-in": {
+      "keyframes": {
+        "0%": { "opacity": "0" },
+        "100%": { "opacity": "1" }
+      },
+      "duration": "300ms",
+      "easing": "ease-out"
+    }
+  }
+}`} />
+
+<CompiledCSS css={`@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 300ms ease-out;
+}`} />
+
+## Adding a custom animation
+
+<ConfigExample json={`{
+  "animations": {
+    "slide-up": {
+      "keyframes": {
+        "0%": { "transform": "translateY(12px)", "opacity": "0" },
+        "100%": { "transform": "translateY(0)", "opacity": "1" }
+      },
+      "duration": "400ms",
+      "easing": "ease-out"
+    }
+  }
+}`} />
+
+After running `holi build`:
+
+```html
+<div class="animate-slide-up">Hello</div>
+```

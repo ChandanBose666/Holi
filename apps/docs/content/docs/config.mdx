@@ -1,0 +1,84 @@
+---
+title: Config Reference
+description: Complete holi.config.json schema — every field with types, examples, and defaults.
+---
+
+Holi is configured through a single `holi.config.json` file. Every field is optional.
+
+## Top-level shape
+
+```ts
+interface HoliConfig {
+  tokens?:      TokensConfig;
+  breakpoints?: Record<string, string>;
+  components?:  Record<string, ComponentConfig>;
+  animations?:  Record<string, AnimationConfig>;
+  output?:      OutputConfig;
+}
+```
+
+## `tokens`
+
+```ts
+interface TokensConfig {
+  color?:      Record<string, string>;
+  spacing?:    Record<string, string>;
+  typography?: Record<string, string>;
+  radius?:     Record<string, string>;
+  shadow?:     Record<string, string>;
+}
+```
+
+<ConfigExample json={`{
+  "tokens": {
+    "color":      { "primary": "#6366F1", "surface": "#F8FAFC" },
+    "spacing":    { "sm": "8px", "md": "16px" },
+    "typography": { "sans": "\\"Inter\\", sans-serif", "size-base": "1rem" },
+    "radius":     { "md": "8px" },
+    "shadow":     { "sm": "0 1px 3px rgba(0,0,0,0.1)" }
+  }
+}`} />
+
+| Field | Type | Default |
+|-------|------|---------|
+| `color` | `Record<string, string>` | `{ primary, primary-dk, surface, text, muted }` |
+| `spacing` | `Record<string, string>` | `{ xs, sm, md, lg, xl }` |
+| `typography` | `Record<string, string>` | `{ sans, size-sm, size-base, size-lg }` |
+| `radius` | `Record<string, string>` | `{ sm, md, lg }` |
+| `shadow` | `Record<string, string>` | `{ sm }` |
+
+## `breakpoints`
+
+```ts
+breakpoints?: Record<string, string>
+// Default: { sm: "640px", md: "768px", lg: "1024px", xl: "1280px" }
+```
+
+## `components`
+
+```ts
+interface ComponentConfig {
+  base:      Record<string, string>;
+  variants?: Record<string, Record<string, string>>;
+}
+```
+
+## `animations`
+
+```ts
+interface AnimationConfig {
+  keyframes: Record<string, Record<string, string>>;
+  duration?: string;
+  easing?:   string;
+}
+```
+
+## `output`
+
+```ts
+interface OutputConfig {
+  outputDir?: string;   // default: "holi-dist"
+  prefix?:    string;   // class prefix, e.g. "h" → .h-btn
+  utilities?: boolean;  // default: true
+}
+```

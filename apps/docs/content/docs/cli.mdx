@@ -1,0 +1,60 @@
+---
+title: CLI Reference
+description: All three Holi CLI commands — init, build, and watch.
+---
+
+## `holi init`
+
+```
+Usage: holi init
+```
+
+Creates `holi.config.json` in the current directory with default tokens, a `btn` component, and a `fade-in` animation. **Idempotent** — will not overwrite an existing file.
+
+---
+
+## `holi build`
+
+```
+Usage: holi build [options]
+
+Options:
+  -c, --config <path>   Path to config file (default: holi.config.json)
+```
+
+Reads your config, compiles all tokens / components / utilities / animations, and writes CSS to the output directory.
+
+```bash
+holi build
+#  Compiling...
+#  Compiled tokens.css
+#  Compiled components.css
+#  Compiled utilities.css
+#  Compiled animations.css
+```
+
+**Custom config path:**
+
+```bash
+holi build -c path/to/custom.config.json
+```
+
+---
+
+## `holi watch`
+
+```
+Usage: holi watch [options]
+
+Options:
+  -c, --config <path>   Path to config file (default: holi.config.json)
+```
+
+Watches `holi.config.json` for changes and re-runs build automatically. Uses a 50ms debounce. Press `Ctrl+C` to stop.
+
+```bash
+holi watch
+# Watching holi.config.json...
+# [change detected] Re-compiling...
+#  Done.
+```

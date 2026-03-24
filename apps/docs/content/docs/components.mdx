@@ -1,0 +1,75 @@
+---
+title: Components
+description: Define reusable CSS component classes with base styles and named variants.
+---
+
+## Built-in: `btn`
+
+<LiveDemo
+  label="btn variants"
+  html={`<div style="display:flex;gap:8px;flex-wrap:wrap;font-family:sans-serif;">
+    <button style="display:inline-flex;padding:8px 16px;background:#6366F1;color:#fff;border:none;border-radius:8px;cursor:pointer;">btn-primary</button>
+    <button style="display:inline-flex;padding:8px 16px;background:transparent;border:1px solid #6366F1;color:#6366F1;border-radius:8px;cursor:pointer;">btn-ghost</button>
+  </div>`}
+/>
+
+<ConfigExample label="Config that produced it" json={`{
+  "components": {
+    "btn": {
+      "base": {
+        "display": "inline-flex",
+        "padding": "spacing.sm spacing.md",
+        "border-radius": "radius.md",
+        "cursor": "pointer"
+      },
+      "variants": {
+        "primary": { "background": "color.primary", "color": "#fff" },
+        "ghost": {
+          "background": "transparent",
+          "border": "1px solid color.primary",
+          "color": "color.primary"
+        }
+      }
+    }
+  }
+}`} />
+
+## Built-in: `card`
+
+<LiveDemo
+  label="card"
+  html={`<div style="padding:32px;background:#F8FAFC;border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,0.1);font-family:sans-serif;max-width:300px;">A card component styled with Holi tokens.</div>`}
+/>
+
+## Custom component walkthrough
+
+**Step 1** — Define in `holi.config.json`:
+
+<ConfigExample json={`{
+  "components": {
+    "badge": {
+      "base": {
+        "display": "inline-flex",
+        "padding": "spacing.xs spacing.sm",
+        "border-radius": "radius.sm",
+        "font-size": "typography.size-sm"
+      },
+      "variants": {
+        "info": { "background": "color.primary", "color": "#fff" }
+      }
+    }
+  }
+}`} />
+
+**Step 2** — Build: `holi build`
+
+**Step 3** — Use in HTML:
+
+```html
+<span class="badge badge-info">New</span>
+```
+
+<LiveDemo
+  label="Result"
+  html={`<span style="display:inline-flex;padding:4px 8px;border-radius:4px;font-size:0.875rem;background:#6366F1;color:#fff;font-family:sans-serif;">New</span>`}
+/>

@@ -1,0 +1,55 @@
+---
+title: Advanced
+description: Output prefix, custom dirs, disabling utilities, multiple breakpoints, and circular token references.
+---
+
+## Output prefix
+
+Namespace all generated class names to avoid collisions.
+
+<ConfigExample json={`{ "output": { "prefix": "h" } }`} />
+
+| Without prefix | With `prefix: "h"` |
+|---------------|---------------------|
+| `.btn` | `.h-btn` |
+| `.btn-primary` | `.h-btn-primary` |
+| `.flex` | `.h-flex` |
+
+## Custom output directory
+
+```json
+{ "output": { "outputDir": "dist/css" } }
+```
+
+## Disabling utilities
+
+```json
+{ "output": { "utilities": false } }
+```
+
+## Multiple breakpoints
+
+<ConfigExample json={`{
+  "breakpoints": {
+    "xs": "480px",
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  }
+}`} />
+
+## Circular token references
+
+If a token references itself or creates a cycle, Holi throws:
+
+```
+HoliValidationError: Circular token reference detected (depth > 10): color.a
+```
+
+<BeforeAfter
+  label="Fix: break the cycle"
+  before="color.a → color.b → color.a"
+  after='color.a: "#6366F1"'
+/>
