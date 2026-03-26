@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { flattenTokens, resolveValue, resolve } from '../src/resolver';
-import type { HoliConfig } from '@holi/shared';
+import type { HoliConfig } from '@holi.dev/shared';
 
 const tokenMap = {
   'color.primary': '#6366F1',

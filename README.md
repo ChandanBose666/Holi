@@ -50,20 +50,20 @@ npx holi watch       # watch mode
 | Package | Description |
 |---|---|
 | [`holi`](packages/cli) | CLI — `npx holi build` |
-| [`@holi/core`](packages/core) | Programmatic API — `compile()`, `compileFromObject()` |
-| [`@holi/schema`](packages/schema) | JSON Schema + `validate()` |
-| [`@holi/shared`](packages/shared) | TypeScript types |
+| [`@holi.dev/core`](packages/core) | Programmatic API — `compile()`, `compileFromObject()` |
+| [`@holi.dev/schema`](packages/schema) | JSON Schema + `validate()` |
+| [`@holi.dev/shared`](packages/shared) | TypeScript types |
 
 ## Programmatic API
 
 ```ts
-import { compile } from '@holi/core';
+import { compile } from '@holi.dev/core';
 
 await compile('holi.config.json', 'holi.css');
 ```
 
 ```ts
-import { compileFromObject } from '@holi/core/browser';
+import { compileFromObject } from '@holi.dev/core/browser';
 
 const css = compileFromObject(config);
 ```

@@ -1,7 +1,7 @@
 import path from 'path';
 import ora from 'ora';
 import chalk from 'chalk';
-import { compileAndWrite } from '@holi/core';
+import { compileAndWrite } from '@holi.dev/core';
 
 export async function build(configPath: string): Promise<void> {
   const absPath = path.resolve(process.cwd(), configPath);

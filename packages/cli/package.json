@@ -28,7 +28,7 @@
     "chokidar": "^4.0.0",
     "ora": "^8.0.0",
     "chalk": "^5.0.0",
-    "@holi/core": "^0.1.0"
+    "@holi.dev/core": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "*",

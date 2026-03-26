@@ -13,7 +13,7 @@ export default defineConfig([
     entry: { 'index.browser': 'src/browser.ts' },
     format: ['esm'],
     platform: 'browser',
-    noExternal: ['ajv', '@holi/schema'],
+    noExternal: ['ajv', '@holi.dev/schema'],
     dts: true,
     outExtension: () => ({ js: '.js' }),
   },

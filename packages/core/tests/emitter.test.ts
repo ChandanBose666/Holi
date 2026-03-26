@@ -6,7 +6,7 @@ import {
   emitAnimations,
   emit,
 } from '../src/emitter';
-import type { ResolvedConfig } from '@holi/shared';
+import type { ResolvedConfig } from '@holi.dev/shared';
 
 describe('emitTokens', () => {
   it('emits :root with CSS custom properties', () => {

@@ -1,4 +1,4 @@
-import type { ResolvedConfig, EmitResult } from '@holi/shared';
+import type { ResolvedConfig, EmitResult } from '@holi.dev/shared';
 
 const DISPLAY_UTILITIES: Record<string, string> = {
   flex:           'display: flex;',

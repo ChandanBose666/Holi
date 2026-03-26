@@ -1,5 +1,5 @@
-import { validate, HoliValidationError } from '@holi/schema';
-import type { HoliConfig } from '@holi/shared';
+import { validate, HoliValidationError } from '@holi.dev/schema';
+import type { HoliConfig } from '@holi.dev/shared';
 
 export { HoliValidationError };
 

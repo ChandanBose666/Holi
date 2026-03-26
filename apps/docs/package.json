@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@holi/core": "*",
+    "@holi.dev/core": "*",
     "fumadocs-core": "latest",
     "fumadocs-ui": "latest",
     "fumadocs-mdx": "latest",

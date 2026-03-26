@@ -1,4 +1,4 @@
-import { DEFAULT_CONFIG } from '@holi/core';
+import { DEFAULT_CONFIG } from '@holi.dev/core';
 
 interface SpacingRulerProps {
   name:  string;

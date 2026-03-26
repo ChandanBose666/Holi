@@ -1,4 +1,4 @@
-import type { HoliConfig, ResolvedConfig } from '@holi/shared';
+import type { HoliConfig, ResolvedConfig } from '@holi.dev/shared';
 
 export function flattenTokens(tokens: HoliConfig['tokens']): Record<string, string> {
   const map: Record<string, string> = {};

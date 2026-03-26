@@ -1,4 +1,4 @@
-import type { HoliConfig } from '@holi/shared';
+import type { HoliConfig } from '@holi.dev/shared';
 
 export const DEFAULT_CONFIG: HoliConfig = {
   tokens: {

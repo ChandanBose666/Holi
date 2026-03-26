@@ -1,6 +1,6 @@
 import { writeFile, access } from 'fs/promises';
 import path from 'path';
-import { DEFAULT_CONFIG } from '@holi/core';
+import { DEFAULT_CONFIG } from '@holi.dev/core';
 
 export async function init(dir: string): Promise<void> {
   const dest = path.join(dir, 'holi.config.json');

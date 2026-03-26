@@ -1,4 +1,4 @@
-import { HoliConfig } from '@holi/shared';
+import { HoliConfig } from '@holi.dev/shared';
 import Ajv from 'ajv';
 
 declare const schema: {

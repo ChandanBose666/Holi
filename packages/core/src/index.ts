@@ -3,13 +3,13 @@ import path from 'path';
 import { parse } from './parser';
 import { resolve } from './resolver';
 import { emit } from './emitter';
-import type { EmitResult } from '@holi/shared';
+import type { EmitResult } from '@holi.dev/shared';
 
 export { parse, resolve, emit };
 export { HoliValidationError } from './parser';
 export { DEFAULT_CONFIG } from './defaults';
 export { compileFromObject } from './compile-from-object';
-export type { HoliConfig, ResolvedConfig, EmitResult, TokenMap } from '@holi/shared';
+export type { HoliConfig, ResolvedConfig, EmitResult, TokenMap } from '@holi.dev/shared';
 
 export async function compile(configPath: string): Promise<EmitResult> {
   const raw      = JSON.parse(await readFile(configPath, 'utf-8'));

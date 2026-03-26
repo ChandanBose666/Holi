@@ -35,17 +35,17 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Publish @holi/shared
+      - name: Publish @holi.dev/shared
         run: npm publish -w packages/shared --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @holi/schema
+      - name: Publish @holi.dev/schema
         run: npm publish -w packages/schema --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @holi/core
+      - name: Publish @holi.dev/core
         run: npm publish -w packages/core --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

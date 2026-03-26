@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import type { HoliConfig } from '@holi/shared';
+import type { HoliConfig } from '@holi.dev/shared';
 import { schema } from './schema';
 import { HoliValidationError } from './errors';
 

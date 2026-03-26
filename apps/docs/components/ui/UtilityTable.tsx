@@ -1,4 +1,4 @@
-import { compileFromObject, DEFAULT_CONFIG } from '@holi/core';
+import { compileFromObject, DEFAULT_CONFIG } from '@holi.dev/core';
 
 interface UtilityRow {
   cls: string;

@@ -1,7 +1,7 @@
 import { parse } from './parser';
 import { resolve } from './resolver';
 import { emit } from './emitter';
-import type { EmitResult } from '@holi/shared';
+import type { EmitResult } from '@holi.dev/shared';
 
 export function compileFromObject(raw: unknown): EmitResult {
   const parsed   = parse(raw);

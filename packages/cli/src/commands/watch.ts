@@ -1,7 +1,7 @@
 import path from 'path';
 import chokidar from 'chokidar';
 import chalk from 'chalk';
-import { compileAndWrite } from '@holi/core';
+import { compileAndWrite } from '@holi.dev/core';
 
 export function watch(configPath: string): void {
   const absPath = path.resolve(process.cwd(), configPath);

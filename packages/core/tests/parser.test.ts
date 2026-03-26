@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { parse } from '../src/parser';
-import { HoliValidationError } from '@holi/schema';
+import { HoliValidationError } from '@holi.dev/schema';
 
 describe('parser', () => {
   it('accepts a valid minimal config', () => {
