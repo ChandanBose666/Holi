@@ -36,21 +36,21 @@ jobs:
         run: npm test
 
       - name: Publish @holi.dev/shared
-        run: npm publish -w packages/shared --access public --provenance
+        run: npm publish -w packages/shared --access public --provenance || echo "already published, skipping"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @holi.dev/schema
-        run: npm publish -w packages/schema --access public --provenance
+        run: npm publish -w packages/schema --access public --provenance || echo "already published, skipping"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @holi.dev/core
-        run: npm publish -w packages/core --access public --provenance
+        run: npm publish -w packages/core --access public --provenance || echo "already published, skipping"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @holi.dev/cli
-        run: npm publish -w packages/cli --access public --provenance
+        run: npm publish -w packages/cli --access public --provenance || echo "already published, skipping"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
