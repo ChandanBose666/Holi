@@ -7,7 +7,7 @@
   "author": "Chandan Bose",
   "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
   "homepage": "https://github.com/ChandanBose666/Holi#readme",
-  "files": ["dist"],
+  "files": ["dist", "README.md"],
   "bin": { "holi": "./dist/index.js" },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
