@@ -11,6 +11,8 @@
   "scripts": {
     "build": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w packages/cli",
     "build:docs": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w apps/docs",
+    "build:web": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w apps/web",
+    "dev:web": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run dev -w apps/web",
     "test": "vitest run",
     "test:browser": "vitest run packages/core/tests/browser-entry.test.ts",
     "dev": "npm run build --workspaces --if-present"
