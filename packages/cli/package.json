@@ -1,5 +1,5 @@
 {
-  "name": "holi",
+  "name": "@holi.dev/cli",
   "version": "0.1.0",
   "description": "Zero-runtime CSS compiler CLI — one config file, pure CSS output",
   "keywords": ["holi", "css", "design-tokens", "zero-runtime", "cli", "build-tool"],

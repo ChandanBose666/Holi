@@ -49,7 +49,7 @@ npx holi watch       # watch mode
 
 | Package | Description |
 |---|---|
-| [`holi`](packages/cli) | CLI — `npx holi build` |
+| [`@holi.dev/cli`](packages/cli) | CLI — `npx @holi.dev/cli build` |
 | [`@holi.dev/core`](packages/core) | Programmatic API — `compile()`, `compileFromObject()` |
 | [`@holi.dev/schema`](packages/schema) | JSON Schema + `validate()` |
 | [`@holi.dev/shared`](packages/shared) | TypeScript types |
