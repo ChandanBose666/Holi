@@ -1,7 +1,14 @@
 {
   "name": "@holi/shared",
   "version": "0.1.0",
-  "private": true,
+  "description": "Shared TypeScript types for the Holi zero-runtime CSS compiler",
+  "keywords": ["holi", "css", "design-tokens", "zero-runtime", "typescript"],
+  "license": "MIT",
+  "author": "Chandan Bose",
+  "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
+  "homepage": "https://github.com/ChandanBose666/Holi#readme",
+  "files": ["dist"],
+  "engines": { "node": ">=18.0.0" },
   "types": "./dist/index.d.ts",
   "exports": {
     ".": { "types": "./dist/index.d.ts" }

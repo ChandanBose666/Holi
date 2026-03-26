@@ -1,7 +1,13 @@
 {
   "name": "@holi/core",
   "version": "0.1.0",
-  "private": true,
+  "description": "Core compiler engine for Holi — parse, resolve, and emit zero-runtime CSS from a config object",
+  "keywords": ["holi", "css", "design-tokens", "zero-runtime", "compiler", "css-in-js"],
+  "license": "MIT",
+  "author": "Chandan Bose",
+  "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
+  "homepage": "https://github.com/ChandanBose666/Holi#readme",
+  "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,14 +18,14 @@
       "node":    { "import": "./dist/index.mjs", "require": "./dist/index.js" }
     }
   },
-  "engines": { "node": ">=24.0.0" },
+  "engines": { "node": ">=18.0.0" },
   "scripts": {
     "build": "tsup"
   },
   "dependencies": {
     "ajv": "^8.0.0",
-    "@holi/schema": "*",
-    "@holi/shared": "*"
+    "@holi/schema": "^0.1.0",
+    "@holi/shared": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "*",
