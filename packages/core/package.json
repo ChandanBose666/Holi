@@ -1,6 +1,6 @@
 {
   "name": "@holi.dev/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core compiler engine for Holi — parse, resolve, and emit zero-runtime CSS from a config object",
   "keywords": ["holi", "css", "design-tokens", "zero-runtime", "compiler", "css-in-js"],
   "license": "MIT",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "ajv": "^8.0.0",
-    "@holi.dev/schema": "^0.1.0",
-    "@holi.dev/shared": "^0.1.0"
+    "@holi.dev/schema": "^0.1.1",
+    "@holi.dev/shared": "^0.1.1"
   },
   "devDependencies": {
     "typescript": "*",

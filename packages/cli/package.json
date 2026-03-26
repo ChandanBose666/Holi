@@ -1,21 +1,19 @@
 {
   "name": "@holi.dev/cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Zero-runtime CSS compiler CLI — one config file, pure CSS output",
   "keywords": ["holi", "css", "design-tokens", "zero-runtime", "cli", "build-tool"],
   "license": "MIT",
   "author": "Chandan Bose",
   "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
   "homepage": "https://github.com/ChandanBose666/Holi#readme",
-  "files": ["dist", "README.md"],
-  "bin": { "holi": "./dist/index.js" },
+  "files": ["dist", "bin", "README.md"],
+  "bin": { "holi": "./bin/holi.js" },
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types":   "./dist/index.d.ts",
-      "import":  "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
@@ -28,7 +26,7 @@
     "chokidar": "^4.0.0",
     "ora": "^8.0.0",
     "chalk": "^5.0.0",
-    "@holi.dev/core": "^0.1.0"
+    "@holi.dev/core": "^0.1.1"
   },
   "devDependencies": {
     "typescript": "*",

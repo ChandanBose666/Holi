@@ -1,6 +1,6 @@
 {
   "name": "@holi.dev/shared",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared TypeScript types for the Holi zero-runtime CSS compiler",
   "keywords": ["holi", "css", "design-tokens", "zero-runtime", "typescript"],
   "license": "MIT",
