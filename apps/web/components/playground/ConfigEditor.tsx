@@ -41,6 +41,7 @@ export function ConfigEditor({ value, onChange }: ConfigEditorProps) {
         tabSize: 2,
         padding: { top: 16, bottom: 16 },
         renderLineHighlight: 'gutter',
+        colorDecorators: true,
         smoothScrolling: true,
         cursorBlinking: 'smooth',
       }}
