@@ -1,0 +1,2 @@
+# Force LF for bin scripts — shebang must not have CRLF
+packages/cli/bin/* text eol=lf
