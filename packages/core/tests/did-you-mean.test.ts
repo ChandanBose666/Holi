@@ -6,8 +6,17 @@ describe('levenshtein', () => {
     expect(levenshtein('color.primary', 'color.primary')).toBe(0);
   });
 
-  it('returns 1 for a single typo', () => {
+  it('returns 2 for a two-edit swap ("priamry" vs "primary")', () => {
     expect(levenshtein('color.priamry', 'color.primary')).toBe(2);
+  });
+
+  it('returns string length when one input is empty', () => {
+    expect(levenshtein('', 'abc')).toBe(3);
+    expect(levenshtein('abc', '')).toBe(3);
+  });
+
+  it('returns 0 for two empty strings', () => {
+    expect(levenshtein('', '')).toBe(0);
   });
 
   it('returns correct distance for unrelated strings', () => {
