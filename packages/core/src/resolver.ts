@@ -2,11 +2,21 @@ import type { HoliConfig, ResolvedConfig } from '@holi.dev/shared';
 
 export function flattenTokens(tokens: HoliConfig['tokens']): Record<string, string> {
   const map: Record<string, string> = {};
+
+  function flattenNestedMap(obj: Record<string, string | Record<string, any>>, prefix: string) {
+    for (const [key, value] of Object.entries(obj)) {
+      const fullKey = prefix ? `${prefix}.${key}` : key;
+      if (typeof value === 'string') {
+        map[fullKey] = value;
+      } else if (typeof value === 'object' && value !== null) {
+        flattenNestedMap(value, fullKey);
+      }
+    }
+  }
+
   for (const [category, values] of Object.entries(tokens)) {
     if (!values) continue;
-    for (const [key, value] of Object.entries(values)) {
-      map[`${category}.${key}`] = value;
-    }
+    flattenNestedMap(values, category);
   }
   return map;
 }
