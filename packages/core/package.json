@@ -2,35 +2,57 @@
   "name": "@holi.dev/core",
   "version": "0.1.1",
   "description": "Core compiler engine for Holi — parse, resolve, and emit zero-runtime CSS from a config object",
-  "keywords": ["holi", "css", "design-tokens", "zero-runtime", "compiler", "css-in-js"],
+  "keywords": [
+    "holi",
+    "css",
+    "design-tokens",
+    "zero-runtime",
+    "compiler",
+    "css-in-js"
+  ],
   "license": "MIT",
   "author": "Chandan Bose",
-  "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChandanBose666/Holi.git"
+  },
   "homepage": "https://github.com/ChandanBose666/Holi#readme",
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types":   "./dist/index.d.ts",
-      "browser": { "import": "./dist/index.browser.js", "types": "./dist/index.browser.d.mts" },
-      "node":    { "import": "./dist/index.mjs", "require": "./dist/index.js" }
+      "types": "./dist/index.d.ts",
+      "browser": {
+        "import": "./dist/index.browser.js",
+        "types": "./dist/index.browser.d.mts"
+      },
+      "node": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      }
     }
   },
-  "engines": { "node": ">=18.0.0" },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsup"
   },
   "dependencies": {
-    "ajv": "^8.0.0",
     "@holi.dev/schema": "^0.1.1",
-    "@holi.dev/shared": "^0.1.1"
+    "@holi.dev/shared": "^0.1.1",
+    "ajv": "^8.0.0",
+    "jiti": "^2.6.1"
   },
   "devDependencies": {
-    "typescript": "*",
+    "@types/node": "*",
     "tsup": "*",
-    "vitest": "*",
-    "@types/node": "*"
+    "typescript": "*",
+    "vitest": "*"
   }
 }
