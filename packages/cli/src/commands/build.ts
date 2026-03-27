@@ -3,15 +3,14 @@ import ora from 'ora';
 import chalk from 'chalk';
 import { compileAndWrite } from '@holi.dev/core';
 
-export async function build(configPath: string): Promise<void> {
-  const absPath = path.resolve(process.cwd(), configPath);
-  const spinner = ora(`Compiling ${configPath}...`).start();
+export async function build(configPathOrCwd: string): Promise<void> {
+  const cwd     = path.resolve(process.cwd(), configPathOrCwd);
+  const spinner = ora(`Compiling...`).start();
   const start   = Date.now();
 
   try {
-    const result = await compileAndWrite(absPath);
-    const ms = Date.now() - start;
-    spinner.succeed(chalk.green(`Compiled in ${ms}ms`));
+    const result = await compileAndWrite(cwd);
+    spinner.succeed(chalk.green(`Compiled in ${Date.now() - start}ms`));
     for (const [filename, css] of Object.entries(result)) {
       if (css.trim()) {
         const kb = (Buffer.byteLength(css, 'utf-8') / 1024).toFixed(1);
