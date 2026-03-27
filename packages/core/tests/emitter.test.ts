@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   emitTokens,
   emitComponent,
+  emitComponents,
   emitUtilities,
   emitAnimations,
   emit,
@@ -130,5 +131,118 @@ describe('emit', () => {
     const result = emit(config);
     expect(result).toHaveProperty('btn.css');
     expect(result).toHaveProperty('card.css');
+  });
+});
+
+describe('emitComponent — states', () => {
+  it('emits hover state when states.hover defined', () => {
+    const css = emitComponent('btn', {
+      base: { display: 'flex' },
+      states: { hover: { background: '#818cf8' } },
+    });
+    expect(css).toContain('.btn:hover {');
+    expect(css).toContain('background: #818cf8');
+  });
+
+  it('emits ::before pseudo-element', () => {
+    const css = emitComponent('btn', {
+      base: { display: 'flex' },
+      states: { before: { content: '""' } },
+    });
+    expect(css).toContain('.btn::before {');
+  });
+});
+
+describe('emitComponent — responsive', () => {
+  it('emits @media block when responsive defined', () => {
+    const css = emitComponent(
+      'container',
+      { base: { width: '100%' }, responsive: { md: { 'max-width': '768px' } } },
+      '',
+      { md: '768px' },
+    );
+    expect(css).toContain('@media (min-width: 768px)');
+    expect(css).toContain('.container');
+    expect(css).toContain('max-width: 768px');
+  });
+});
+
+describe('emitComponent — compoundVariants', () => {
+  it('emits selector combining all when conditions', () => {
+    const css = emitComponent('btn', {
+      base: { display: 'flex' },
+      variants: { lg: { 'font-size': '1.125rem' }, primary: { background: '#6366f1' } },
+      compoundVariants: [
+        { when: { size: 'lg', variant: 'primary' }, css: { 'font-weight': '700' } },
+      ],
+    });
+    expect(css).toContain('.btn-lg.btn-primary {');
+    expect(css).toContain('font-weight: 700');
+  });
+});
+
+describe('emitComponents — tree-shaking', () => {
+  it('only emits components listed in include', () => {
+    const components = {
+      btn: { base: { display: 'flex' } },
+      card: { base: { padding: '16px' } },
+    };
+    const result = emitComponents(components, '', {}, ['btn']);
+    expect(result).toHaveProperty('btn.css');
+    expect(result).not.toHaveProperty('card.css');
+  });
+
+  it('emits all components when include is undefined', () => {
+    const components = {
+      btn: { base: { display: 'flex' } },
+      card: { base: { padding: '16px' } },
+    };
+    const result = emitComponents(components, '', {}, undefined);
+    expect(result).toHaveProperty('btn.css');
+    expect(result).toHaveProperty('card.css');
+  });
+});
+
+describe('emitUtilities — custom utilities', () => {
+  it('emits custom utility base class', () => {
+    const css = emitUtilities(
+      { spacing: {} },
+      { md: '768px' },
+      true,
+      '',
+      { 'text-lg': { base: { 'font-size': '1.125rem' } } },
+    );
+    expect(css).toContain('.text-lg {');
+    expect(css).toContain('font-size: 1.125rem');
+  });
+
+  it('emits responsive variant for custom utility', () => {
+    const css = emitUtilities(
+      { spacing: {} },
+      { md: '768px' },
+      true,
+      '',
+      { 'text-lg': { base: { 'font-size': '1rem' }, responsive: { md: { 'font-size': '1.125rem' } } } },
+    );
+    expect(css).toContain('@media (min-width: 768px)');
+    expect(css).toContain('.text-lg');
+    expect(css).toContain('font-size: 1.125rem');
+  });
+});
+
+describe('emit — themes.css', () => {
+  it('includes themes.css key when themes defined', () => {
+    const config: ResolvedConfig = {
+      tokens: {},
+      themes: { dark: { color: { primary: '#818cf8' } } },
+    };
+    const result = emit(config);
+    expect(result).toHaveProperty('themes.css');
+    expect(result['themes.css']).toContain('--color-primary: #818cf8');
+  });
+
+  it('themes.css is empty string when no themes', () => {
+    const config: ResolvedConfig = { tokens: {} };
+    expect(emit(config)['themes.css']).toBe('');
   });
 });
