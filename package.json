@@ -9,7 +9,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w packages/cli",
+    "build": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w packages/cli && npm run build -w packages/vite && npm run build -w packages/postcss && npm run build -w packages/webpack",
     "build:docs": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w apps/docs",
     "build:web": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run build -w apps/web",
     "dev:web": "npm run build -w packages/shared && npm run build -w packages/schema && npm run build -w packages/core && npm run dev -w apps/web",
