@@ -39,10 +39,10 @@ export function resolveValue(
   }
 
   // Embedded references within a compound value (e.g. "spacing.sm spacing.md")
-  return value.replace(/([\w-]+\.)+[\w-]+/g, (ref) => {
+  return value.replace(/(?:[a-zA-Z][\w-]*\.)+[\w-]+/g, (ref) => {
     if (tokenMap[ref] !== undefined) {
       if (mode === 'variables') return `var(--${ref.replace(/\./g, '-')})`;
-      return tokenMap[ref]!;
+      return resolveValue(tokenMap[ref]!, tokenMap, mode, location, depth + 1);
     }
     // Unknown reference
     if (mode === 'variables') return `var(--${ref.replace(/\./g, '-')})`;
@@ -81,5 +81,41 @@ export function resolve(
   mode: 'inline' | 'variables' = 'inline',
 ): ResolvedConfig {
   const tokenMap = flattenTokens(config.tokens as Record<string, unknown>);
-  return resolveObject(config, tokenMap, mode, '') as ResolvedConfig;
+  const resolved: Record<string, unknown> = { ...(config as unknown as Record<string, unknown>) };
+
+  if (config.components) {
+    resolved['components'] = resolveObject(
+      config.components,
+      tokenMap,
+      mode,
+      'components',
+    );
+  }
+
+  if (config.utilities) {
+    resolved['utilities'] = resolveObject(
+      config.utilities,
+      tokenMap,
+      mode,
+      'utilities',
+    );
+  }
+
+  if (config.animations) {
+    const resolvedAnimations: Record<string, unknown> = {};
+    for (const [name, anim] of Object.entries(config.animations)) {
+      resolvedAnimations[name] = {
+        ...anim,
+        keyframes: resolveObject(
+          anim.keyframes,
+          tokenMap,
+          mode,
+          `animations.${name}.keyframes`,
+        ),
+      };
+    }
+    resolved['animations'] = resolvedAnimations;
+  }
+
+  return resolved as unknown as ResolvedConfig;
 }

@@ -45,6 +45,11 @@ describe('resolveValue', () => {
       'Unknown token "unknown.ref"',
     );
   });
+
+  it('resolves chained refs inside a compound value', () => {
+    const chainMap = { 'a.b': 'a.c', 'a.c': '#123' };
+    expect(resolveValue('a.b a.c', chainMap, 'inline', 'test')).toBe('#123 #123');
+  });
 });
 
 describe('resolve', () => {
