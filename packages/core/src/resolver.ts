@@ -82,6 +82,7 @@ export function resolve(
 ): ResolvedConfig {
   const tokenMap = flattenTokens(config.tokens as Record<string, unknown>);
   const resolved: Record<string, unknown> = { ...(config as unknown as Record<string, unknown>) };
+  resolved['tokens'] = { ...config.tokens };
 
   if (config.components) {
     resolved['components'] = resolveObject(
