@@ -1,0 +1,25 @@
+{
+  "name": "@holi.dev/vite",
+  "version": "0.1.0",
+  "description": "Vite plugin for Holi CSS compiler with HMR support",
+  "keywords": ["holi", "vite", "css", "design-tokens", "plugin"],
+  "license": "MIT",
+  "author": "Chandan Bose",
+  "repository": { "type": "git", "url": "https://github.com/ChandanBose666/Holi.git" },
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types":   "./dist/index.d.ts",
+      "import":  "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": { "build": "tsup" },
+  "engines": { "node": ">=18.0.0" },
+  "dependencies": { "@holi.dev/core": "*" },
+  "peerDependencies": { "vite": ">=4.0.0" },
+  "devDependencies": { "typescript": "*", "tsup": "*", "vite": "^6.0.0" }
+}
