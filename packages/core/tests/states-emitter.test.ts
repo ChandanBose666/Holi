@@ -52,4 +52,16 @@ describe('emitStates', () => {
     expect(css).toContain('.button:hover {');
     expect(css).toContain('.button:active {');
   });
+
+  it('emits :checked pseudo-class with single colon', () => {
+    const css = emitStates('input', { checked: { 'background-color': '#6366f1' } });
+    expect(css).toContain('.input:checked {');
+    expect(css).not.toContain('.input::checked {');
+  });
+
+  it('emits :invalid pseudo-class with single colon', () => {
+    const css = emitStates('input', { invalid: { 'border-color': '#ef4444' } });
+    expect(css).toContain('.input:invalid {');
+    expect(css).not.toContain('.input::invalid {');
+  });
 });

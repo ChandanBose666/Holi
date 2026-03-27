@@ -33,4 +33,13 @@ describe('emitThemes', () => {
   it('returns empty string when themes is undefined', () => {
     expect(emitThemes(undefined)).toBe('');
   });
+
+  it('returns empty string for empty themes object', () => {
+    expect(emitThemes({})).toBe('');
+  });
+
+  it('nests declaration inside :root inside @media for dark theme', () => {
+    const css = emitThemes({ dark: { color: { primary: '#818cf8' } } });
+    expect(css).toMatch(/@media \(prefers-color-scheme: dark\) \{[\s\S]*:root \{[\s\S]*--color-primary: #818cf8/);
+  });
 });

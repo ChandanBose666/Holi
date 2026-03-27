@@ -1,11 +1,7 @@
 import type { ComponentConfig } from '@holi.dev/shared';
+import { applyPrefix } from './utils';
 
 const PSEUDO_ELEMENTS = new Set(['before', 'after', 'placeholder']);
-
-function applyPrefix(className: string, prefix: string): string {
-  if (!prefix) return className;
-  return `.${prefix}-${className.slice(1)}`;
-}
 
 export function emitStates(
   name: string,

@@ -1,9 +1,5 @@
 import type { TokenMap } from '@holi.dev/shared';
-
-function applyPrefix(className: string, prefix: string): string {
-  if (!prefix) return className;
-  return `.${prefix}-${className.slice(1)}`;
-}
+import { applyPrefix } from './utils';
 
 export function emitResponsive(
   name: string,

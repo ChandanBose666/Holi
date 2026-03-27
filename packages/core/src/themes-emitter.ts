@@ -8,25 +8,23 @@ export function emitThemes(
   const blocks: string[] = [];
 
   for (const [name, overrides] of Object.entries(themes)) {
-    const vars = Object.entries(overrides)
+    // Build declarations without leading indent; apply indent at template level
+    const decls = Object.entries(overrides)
       .flatMap(([category, values]) =>
         Object.entries(values ?? {}).map(
-          ([key, value]) => `  --${category}-${key}: ${value};`,
+          ([key, value]) => `--${category}-${key}: ${value};`,
         ),
-      )
-      .join('\n');
+      );
 
     if (strategy === 'class') {
-      blocks.push(`.${name} {\n${vars}\n}`);
+      const body = decls.map((d) => `  ${d}`).join('\n');
+      blocks.push(`.${name} {\n${body}\n}`);
     } else if (name === 'dark') {
-      blocks.push(
-        `@media (prefers-color-scheme: dark) {\n  :root {\n${vars
-          .split('\n')
-          .map((l) => `  ${l}`)
-          .join('\n')}\n  }\n}`,
-      );
+      const body = decls.map((d) => `    ${d}`).join('\n');
+      blocks.push(`@media (prefers-color-scheme: dark) {\n  :root {\n${body}\n  }\n}`);
     } else {
-      blocks.push(`.${name} {\n${vars}\n}`);
+      const body = decls.map((d) => `  ${d}`).join('\n');
+      blocks.push(`.${name} {\n${body}\n}`);
     }
   }
 
