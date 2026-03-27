@@ -40,8 +40,10 @@ describe('resolveValue', () => {
     expect(() => resolveValue('a.x', circular)).toThrow('Circular token reference detected');
   });
 
-  it('partially resolves embedded refs — unknown refs left verbatim', () => {
-    expect(resolveValue('spacing.sm unknown.ref', tokenMap)).toBe('8px unknown.ref');
+  it('throws on unknown embedded ref in inline mode', () => {
+    expect(() => resolveValue('spacing.sm unknown.ref', tokenMap, 'inline', 'test')).toThrow(
+      'Unknown token "unknown.ref"',
+    );
   });
 });
 
@@ -64,5 +66,66 @@ describe('resolve', () => {
     };
     resolve(config);
     expect(config.components!['btn'].base['background']).toBe('color.primary');
+  });
+});
+
+describe('flattenTokens — deep nesting', () => {
+  it('flattens three-level nesting to dot-separated keys', () => {
+    const result = flattenTokens({
+      semantic: { color: { interactive: { default: '#6366f1' } } } as any,
+    });
+    expect(result['semantic.color.interactive.default']).toBe('#6366f1');
+  });
+});
+
+describe('resolveValue — mode: variables', () => {
+  it('resolves a direct token ref to var()', () => {
+    expect(resolveValue('color.primary', tokenMap, 'variables')).toBe('var(--color-primary)');
+  });
+
+  it('resolves embedded refs to var() in compound value', () => {
+    expect(resolveValue('spacing.sm spacing.md', tokenMap, 'variables')).toBe(
+      'var(--spacing-sm) var(--spacing-md)',
+    );
+  });
+
+  it('emits var() for unknown refs in variables mode', () => {
+    expect(resolveValue('spacing.sm unknown.ref', tokenMap, 'variables')).toBe(
+      'var(--spacing-sm) var(--unknown-ref)',
+    );
+  });
+});
+
+describe('resolveValue — error messages', () => {
+  it('throws with location context for unknown refs in inline mode', () => {
+    expect(() =>
+      resolveValue('color.priamry', tokenMap, 'inline', 'components.button.base'),
+    ).toThrow('Unknown token "color.priamry" in components.button.base');
+  });
+
+  it('includes did-you-mean suggestion for close typo', () => {
+    expect(() =>
+      resolveValue('color.priamry', tokenMap, 'inline', 'components.button.base'),
+    ).toThrow('Did you mean "color.primary"');
+  });
+});
+
+describe('resolve — mode: variables', () => {
+  it('resolves component token refs to var() in variables mode', () => {
+    const config: HoliConfig = {
+      tokens: { color: { primary: '#6366F1' } },
+      components: { btn: { base: { background: 'color.primary' } } },
+    };
+    const resolved = resolve(config, 'variables');
+    expect(resolved.components!['btn'].base['background']).toBe('var(--color-primary)');
+  });
+
+  it('inline mode still resolves to raw values', () => {
+    const config: HoliConfig = {
+      tokens: { color: { primary: '#6366F1' } },
+      components: { btn: { base: { background: 'color.primary' } } },
+    };
+    const resolved = resolve(config, 'inline');
+    expect(resolved.components!['btn'].base['background']).toBe('#6366F1');
   });
 });
