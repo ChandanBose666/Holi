@@ -113,6 +113,7 @@ describe('emit', () => {
     expect(result).toHaveProperty('tokens.css');
     expect(result).toHaveProperty('utilities.css');
     expect(result).toHaveProperty('animations.css');
+    expect(result).toHaveProperty('themes.css');
   });
 
   it('animations.css is empty string when no animations defined', () => {

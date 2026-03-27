@@ -1,7 +1,7 @@
-import type { HoliConfig } from '@holi.dev/shared';
+import type { ResolvedConfig } from '@holi.dev/shared';
 
 export function emitThemes(
-  themes: HoliConfig['themes'],
+  themes: ResolvedConfig['themes'],
   strategy: 'media' | 'class' = 'media',
 ): string {
   if (!themes || Object.keys(themes).length === 0) return '';
